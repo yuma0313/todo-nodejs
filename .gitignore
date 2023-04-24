@@ -10,4 +10,5 @@ public/
 
 # OS生成ファイル
 .DS_Store
+.vscode
 Thumbs.db

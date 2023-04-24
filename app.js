@@ -44,7 +44,6 @@ app.post("/create-task", function (req, res) {
   }
 
   tasks.push(task);
-  console.log(tasks);
   res.render("index", { tasks: tasks });
 });
 
@@ -60,4 +59,16 @@ app.post("/complete-task", (req, res) => {
   res.render("index", { tasks: tasks });
 });
 
-app.put("update-task");
+//編集機能
+app.use("/public", express.static("public"));
+app.put("update-task", (req, res) => {
+  const taskId = req.body.taskId;
+  const newTask = req.body.newTask;
+
+  //idが一致する要素のインデックスを取得
+  const index = tasks.findIndex((el) => el.id === +taskId);
+  //インデックスの要素を更新
+  tasks.splice(index, 1);
+
+  res.render("index", { tasks: tasks });
+});
