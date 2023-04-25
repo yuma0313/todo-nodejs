@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>TODOリスト</title>
+  </head>
+  <body>
+    <h1>TODOリスト</h1>
+    <form action="/update/<%= task.id %>" method="post">
+      <label for="title">タイトル:</label>
+      <input type="text" name="task" value="<%= task.title %>" />
+      <button type="submit">タスク更新</button>
+    </form>
+  </body>
+</html>

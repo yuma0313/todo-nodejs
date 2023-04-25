@@ -3,11 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>TODOリスト</title>
-    <script src="/public/edit.js"></script>
   </head>
   <body>
     <h1>TODOリスト</h1>
-    <form action="/create-task" method="post">
+    <form action="/create" method="post">
       <label for="title">タイトル:</label>
       <input type="text" id="title" name="title" required />
       <button type="submit">タスク登録</button>
@@ -15,16 +14,8 @@
     <ul>
       <% tasks.forEach(task => { %>
       <li>
-        <span><%= task.id %></span>
         <span id="task-<%= task.id %>"><%= task.title %></span>
-        <button
-          id="edit-button-<%= task.id %>"
-          data-id="<%= task.id %>"
-          data-title="<%= task.title %>"
-          onclick="editTask(this)"
-        >
-          編集
-        </button>
+        <a href="/edit/<%= task.id %>"> 編集 </a>
         <form action="/complete-task" method="post">
           <input type="hidden" name="taskId" value="<%= task.id %>" />
           <button type="submit">完了</button>
